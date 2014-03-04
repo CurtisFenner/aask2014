@@ -46,3 +46,20 @@ function goToRankings(){
 function goToSchedule(){
 	window.open("http://www2.usfirst.org/" + eventURL + "matchresults.html", "_self");
 }
+
+
+function createDistributionGraph(an) {
+	var oprs = an.expected[an.expected.length-1];
+	var ccwms = an.ccwm.toSingleArray();
+	var min = an.getTotal(0);
+	var max = an.getTotal(0);
+	for (var i = 0; i < an.teams.length; i++) {
+		var exp = oprs[i];
+		var ccw = ccwms[i];
+		min = Math.min(exp,min);
+		max = Math.max(exp,max);
+		min = Math.min(ccw,min);
+		max = Math.max(ccw,max);
+	}
+	var oprs = an.expected[an.expected.length-1];
+}
