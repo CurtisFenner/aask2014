@@ -11,10 +11,8 @@ function Analyze(event) {
 		winMargin.push(0);
 		QS.push(ranks[i].get("QS"));
 	}
-	this.QS = QS;
 	var mpf = zeros(ranks.length,ranks.length);
 
-	//createMPF()
 	for (var i = 0; i < matches.length; i++) {
 		var match = matches[i];
 		if (isFinite(match.redScore) && isFinite(match.blueScore)) {
@@ -54,9 +52,7 @@ function Analyze(event) {
 		}
 		mpf.set(i,i, sum / 2);
 	}
-	// \createMPF
 
-	//createPointMatrices()
 	var vectors = ["auton","truss","assist","teleop"];
 	var points = []; //list of points
 	while (points.length < vectors.length) {
@@ -108,7 +104,7 @@ function Analyze(event) {
 			return 0;
 		}
 	}
-	this.getTotal = function(t) {
+	this.getExpected = function(t) {
 		var u = teams.indexOf(t);
 		if (u >= 0) {
 			return expected[expected.length-1][u];
@@ -117,13 +113,24 @@ function Analyze(event) {
 		}
 	}
 
+	//Predict final QS for each team:
 	for (var i = 0; i < matches.length; i++) {
 		var match = matches[i];
 		if (isFinite(match.redScore) && isFinite(match.blueScore)) {
-
+			// `match` has been played (we don't need to do anything (((()))))
 		} else {
-			//An unplayed matched.
-			var rede = predictAllianceValue(match.red[0],match.red[1],match.red[2], P_OPR, this);
+			// `match` has not yet been played
+
+			// Calculate expected scores
+			var redE = predictAllianceValue(match.red[0],match.red[1],match.red[2], P_OPR, this); //Expected score for red alliance
+			var blueE = predictAllianceValue(match.blue[0],match.blue[1],match.blue[2], P_OPR, this);
+			var winner = redE > blueE ? match.red : match.blue;
+			//Each winner gains 2 qualification points
+			for (var j = 0; j < winner.length; j++) {
+				QS[teams.indexOf(winner[j])] += 2;
+			}
 		}
 	}
+
+	this.QS = QS;
 }

@@ -18,7 +18,7 @@ function Main() {
 				u.push(parseFloat(an.expected[j].get(i,0).toFixed(1)));
 			}
 			u.push(an.ccwm.get(i,0).toFixed(1));
-			u.push(1);
+			u.push(an.QS[i]);
 			data.push(u);
 		}
 
@@ -28,11 +28,11 @@ function Main() {
 			[eventName + "(Analysis)",
 				[["<em>FIRST</em> Data*",["Team","Rank"]] ,
 				["Direct Calculations<sup>†</sup>",["Auton","Truss/Catch","Assist","Other Teleop","OPR (Total)"]] ,
-				["Indirect Calculations<sup>‡</sup>",["CCWM","Predicted Seed"]]]
+				["Indirect Calculations<sup>‡</sup>",["CCWM","Predicted QS"]]]
 			],
 			data,
 			[false,gradientGreenToRed,gradientGreenToRed,gradientGreenToRed,gradientGreenToRed,gradientGreenToRed,gradientGreenToRed,gradientGreenToRed,gradientGreenToRed],
-			["increase","increase","decrease","decrease","decrease","decrease","decrease","decrease","increase"],
+			["increase","increase","decrease","decrease","decrease","decrease","decrease","decrease","decrease"],
 			1
 		);
 		bigtableplace.innerHTML = "";
