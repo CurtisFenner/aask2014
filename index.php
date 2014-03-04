@@ -126,10 +126,7 @@ if (isset($_REQUEST["grab"])) {
 }
 //At this point, this is the public rendered page.
 
-?>
-
-<!doctype html>
-
+?><!doctype html>
 <html> 
 	<head>
 		<meta charset="UTF-8">
@@ -140,7 +137,6 @@ if (isset($_REQUEST["grab"])) {
 		<script type="text/javascript" src="<?php directory();?>graphing.js"></script>
 		<script type="text/javascript" src="<?php directory();?>matrix.js"></script>
 		<script type="text/javascript" src="<?php directory();?>frcevent.js"></script>
-		<script type="text/javascript" src="<?php directory();?>main.js"></script>
 		<script src="newmain.js"></script>
 		<script src="analyze.js"></script>
 		<link href="<?php directory();?>scouting.css" rel="stylesheet" type="text/css">
@@ -180,8 +176,8 @@ if (isset($_REQUEST["grab"])) {
 					</tr>
 					<tr>
 						<td colspan="2">FIRST Data*</td>
-						<td colspan="4">Direct Calculations<sup>&dagger;</sup></td>
-						<td colspan="3">Subjective Calculations<sup>&Dagger;</sup></td>
+						<td colspan="5">Direct Calculations<sup>&dagger;</sup></td>
+						<td colspan="2">Subjective Calculations<sup>&Dagger;</sup></td>
 					</tr>
 					<tr>
 						<td>Team</td>
@@ -220,42 +216,7 @@ if (isset($_REQUEST["grab"])) {
 			<!-- Column 1 -->
 			
 			<div style="width:400px; margin:0px; padding:0px; float:left;">
-				<!-- Correlation Table -->
-				<table class="shinytable" id="correlationtable" data-sorting="iidddddddd" style="width:400px;">
-					<thead>
-						<tr>
-							<td colspan="10">
-							<script>document.write(eventName + " (Correlation)");</script>
-							</td>
-						</tr>
-						<tr>
-							<td></td>
-							<td>Team</td>
-							<td>Rank</td>
-							<td>Auton</td>
-							<td>Climb</td>
-							<td>Teleop</td>
-							<td>OPR</td>
-							<td>CCWM</td>
-							<td>Seed*</td>
-						</tr>
-					</thead>
-					<tbody id="correlationdata">
-						<tr><td colspan="10"><em>Waiting for script to load...</em></td></tr>
-					</tbody>
-					<tfoot>
-						<tr><td class="description" colspan="10">
-							*Projected Seed
-							<br/>
-							This is a correlation matrix for many of the various statistics we have collected and calculated, including raw point values.  Values near positive or negative one indicate a high correlation.
-						</td></tr>
-					</tfoot>
-				</table>
-			
-				<br/>
-				<div class="hr"></div>
-				<br/>
-				
+
 				<!-- Score Distribution Graph -->
 				<table class="shinytable">
 					<thead><tr><td>Point Distributions</td></tr></thead>
