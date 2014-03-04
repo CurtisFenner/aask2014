@@ -375,7 +375,10 @@ if (isset($_REQUEST["grab"])) {
 				AASK.  If not, see <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>.
 				<br/><br/>
 				AASK was started during the 2013 FIRST season by Ben Bray and Curtis Fenner of
-				Team 245, the AdamBots, for use by other FRC teams.</code>
+				Team 245, the AdamBots, for use by other FRC teams.
+				<br><br>
+				For the 2014 FIRST season, Curtis Fenner and Nathan Fenner of Team 245, the AdamBots
+				updated and improved it.</code>
 				<br/>
 			</div>
 		</div>

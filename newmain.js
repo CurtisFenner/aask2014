@@ -23,8 +23,6 @@ function Main() {
 			data.push(u);
 		}
 
-		console.log(data);
-
 		var tab = table.make(
 			[eventName + "(Analysis)",
 				[["<em>FIRST</em> Data*",["Team","Rank"]] ,
@@ -39,5 +37,4 @@ function Main() {
 		bigtableplace.innerHTML = "";
 		tab.addSelf(document.getElementById("bigtableplace"));
 	});
-	console.log("BEGIN");
 }

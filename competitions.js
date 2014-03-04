@@ -13,9 +13,10 @@ You should have received a copy of the GNU General Public License along with
 AASK.  If not, see <http://www.gnu.org/licenses/>.
 
 AASK was started during the 2013 FIRST season by Ben Bray and Curtis Fenner of
-Team 245, the Adambots, for use by other FRC teams.
+Team 245, the AdamBots, for use by other FRC teams.
 
-For the 2014 FIRST season, 
+For the 2014 FIRST season, Curtis Fenner and Nathan Fenner of Team 245, the AdamBots
+updated and improved it.
 */
 
 "use strict";

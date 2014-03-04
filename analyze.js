@@ -96,7 +96,8 @@ function Analyze(event) {
 	var expected = [];
 
 	if (!isFinite(determinant) || determinant === 0) {
-		alert("Not enough matches played for any confidence!");
+		this.warning = "Not enough matches have been played.";
+		return;
 	} else {
 		for (var i = 0; i < vectors.length; i++) {
 			expected[i] = MatrixSolveLUPrefactorized(L,U,arrayToColumnVector(points[i])); //Maybe points[i] should be a matrix
