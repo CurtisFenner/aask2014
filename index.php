@@ -136,6 +136,7 @@ if (isset($_REQUEST["grab"])) {
 		<script type="text/javascript" src="<?php directory();?>statistics.js"></script>
 		<script type="text/javascript" src="<?php directory();?>graphing.js"></script>
 		<script type="text/javascript" src="<?php directory();?>matrix.js"></script>
+		<script type="text/javascript" src="<?php directory();?>table.js"></script>
 		<script type="text/javascript" src="<?php directory();?>frcevent.js"></script>
 		<script src="newmain.js"></script>
 		<script src="analyze.js"></script>

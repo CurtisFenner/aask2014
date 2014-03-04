@@ -4,10 +4,13 @@ function Analyze(event) {
 	var matches = event.getMatches();
 	var ranks = event.getRanks();
 	var teams = [];
+	var winMargin = [];
 	for (var i = 0; i < ranks.length; i++) {
 		teams.push(ranks[i].get("team"));
+		winMargin.push(0);
 	}
 	var mpf = zeros(ranks.length,ranks.length);
+
 	//createMPF()
 	for (var i = 0; i < matches.length; i++) {
 		var match = matches[i];
@@ -28,6 +31,14 @@ function Analyze(event) {
 					mpf.increment( teams.indexOf(first) , teams.indexOf(second)  );
 					mpf.increment( teams.indexOf(second) , teams.indexOf(first)  );
 				}
+			}
+			var margin = match.redScore - match.blueScore;
+			for (var j = 0; j < 3; j++) {
+				var u;
+				u = teams.indexOf(match.red[j]);
+				winMargin[u] += margin;
+				u = teams.indexOf(match.blue[j]);
+				winMargin[u] -= margin;
 			}
 		}
 	}
@@ -69,7 +80,6 @@ function Analyze(event) {
 	this.ranks = ranks;
 	this.matches = matches;
 
-
 	var LU = mpf.luSeparate();
 	var L = LU[0];
 	var U = LU[1];
@@ -84,4 +94,6 @@ function Analyze(event) {
 		}
 	}
 	this.expected = expected;
+
+	this.ccwm = MatrixSolveLUPrefactorized(L,U,arrayToColumnVector(winMargin));
 }

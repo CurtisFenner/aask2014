@@ -122,7 +122,7 @@ table.make = function(header,data,decorators,orders,sortBy) {
 				if (decorators[j]) {
 					var place = 0;
 					for (var k = 0; k < data.length; k++) {
-						if (data[k][j] >= data[i][j]) {
+						if (parseFloat(data[k][j]) >= parseFloat(data[i][j])) {
 							place++;
 						}
 					}
@@ -148,7 +148,7 @@ table.make = function(header,data,decorators,orders,sortBy) {
 			sortedBody = c;
 		}
 		data.sort(function(a,b) {
-			return (a[c] - b[c]) * m;
+			return (parseFloat(a[c]) - parseFloat(b[c])) * m;
 		});
 		// sort the data! woo
 		render();
@@ -178,7 +178,7 @@ function cssRGB(r,g,b) {
 }
 
 function lerp(a,b,x) {
-	return a * (1-x) + b * x;
+	return a * (1-parseFloat(x)) + parseFloat(b) * parseFloat(x);
 }
 
 function gradientGreenToRed(prop) {
