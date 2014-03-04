@@ -3,8 +3,7 @@
 var analyze;
 
 function Main() {
-	var ename = "Southfield";
-	var event = new FRCEvent("2014comp/events/MISOU/","TEST",
+	var event = new FRCEvent(eventURL,"TEST",
 		function(event) {
 		var an = new Analyze(event);
 		analyze = an;
@@ -26,15 +25,17 @@ function Main() {
 		console.log(data);
 
 		var tab = table.make(
-			[ename + "(Analysis)",
+			[eventName + "(Analysis)",
 				[["<em>FIRST</em> Data*",["Team","Rank"]] ,
 				["Direct Calculations<sup>†</sup>",["Auton","Truss/Catch","Assist","Other Teleop","OPR (Total)"]] ,
 				["Indirect Calculations<sup>‡</sup>",["CCWM","Predicted Seed"]]]
 			],
 			data,
 			[false,gradientGreenToRed,gradientGreenToRed,gradientGreenToRed,gradientGreenToRed,gradientGreenToRed,gradientGreenToRed,gradientGreenToRed,gradientGreenToRed],
-			["increase","increase","decrease","decrease","decrease","decrease","decrease","decrease","increase"]
+			["increase","increase","decrease","decrease","decrease","decrease","decrease","decrease","increase"],
+			1
 		);
+		bigtableplace.innerHTML = "";
 		tab.addSelf(document.getElementById("bigtableplace"));
 	});
 	console.log("BEGIN");

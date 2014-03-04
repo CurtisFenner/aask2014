@@ -23,6 +23,9 @@ Mode:
 2: CCWM
 **/
 
+var P_OPR = 0;
+var P_CCWM = 2;
+
 // Array Remove - By John Resig (MIT Licensed)
 Array.prototype.remove = function(from, to) {
   var rest = this.slice((to || from) + 1 || this.length);
@@ -33,14 +36,11 @@ Array.prototype.remove = function(from, to) {
 //This is for convenience. It loads from the FRCEvent `even` the data.
 function predictTeamValue(team,mode,even) {
 	team = parseInt("" + team);
-	if (!even.isTeam(team)) {
-		return 0;
-	}
-	if (mode == 2) {
+	if (mode == P_CCWM) {
 		return even.getCCWM(team);
 	}
-	if (mode == 0) {
-		return even.getTotalEC(team);
+	if (mode == P_OPR) {
+		return even.getExpected(team);
 	}
 }
 

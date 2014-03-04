@@ -1,3 +1,4 @@
+"use strict";
 /*
 This file is part of the Adambots Automated Scouting Kit (AASK).
 
@@ -17,11 +18,6 @@ Team 245, the Adambots, for use by other FRC teams.
 */
 
 var competitionList = [
-	["FIRST Championship Archimedes","2014comp/Events/Archimedes"],
-	["FIRST Championship Curie","2014comp/Events/Curie"],
-	["FIRST Championship Galileo","2014comp/Events/Galileo"],
-	["FIRST Championship Newton","2014comp/Events/Newton"],
-	["FIRST Championship","2014comp/Events//"],
 	["Central Illinois Regional","2014comp/Events/ILIL/"],
 	["Palmetto Regional","2014comp/Events/SCMB/"],
 	["Alamo Regional sponsored by Rackspace Hosting","2014comp/Events/TXSA/"],
@@ -76,15 +72,6 @@ var competitionList = [
 	["Las Vegas Regional","2014comp/Events/NVLV/"],
 	["New York City Regional","2014comp/Events/NYNY/"],
 	["Lone Star Regional","2014comp/Events/TXHO/"],
-	["Michigan State Championship","2014comp/Events/MICMP/"],
-	["Mid-Atlantic Region Championship","2014comp/Events/MRCMP/"],
-	["New England Region Championship","2014comp/Events/NECMP/"],
-	["Autodesk PNW Championship","2014comp/Events/PNCMP/"],
-	["Center Line District","2014comp/Events/MICEN/"],
-	["Southfield District","2014comp/Events/MISOU/"],
-	["Kettering University District","2014comp/Events/MIKET/"],
-	["Gull Lake District","2014comp/Events/MIGUL/"],
-	["Escanaba District","2014comp/Events/MIESC/"],
 	["Howell District","2014comp/Events/MIHOW/"],
 	["West Michigan Robotics District","2014comp/Events/MIWMI/"],
 	["Great Lakes Bay Region District","2014comp/Events/MIMID/"],
@@ -95,21 +82,15 @@ var competitionList = [
 	["Lansing District","2014comp/Events/MILAN/"],
 	["Bedford District","2014comp/Events/MIBED/"],
 	["Troy District","2014comp/Events/MITRY/"],
+	["Michigan State Championship","2014comp/Events/MICMP/"],
 	["MAR Mt. Olive District","2014comp/Events/NJFLA/"],
 	["MAR Hatboro-Horsham District","2014comp/Events/PAHAT/"],
 	["MAR Springside Chestnut Hill District","2014comp/Events/PAPHI/"],
 	["MAR Clifton District","2014comp/Events/NJCLI/"],
 	["MAR Lenape-Seneca District","2014comp/Events/NJTAB/"],
 	["MAR Bridgewater-Raritan District","2014comp/Events/NJBRI/"],
-	["Granite State District","2014comp/Events/NHNAS/"],
-	["UNH District","2014comp/Events/NHDUR/"],
-	["Groton District","2014comp/Events/CTGRO/"],
-	["WPI District","2014comp/Events/MAWOR/"],
-	["Rhode Island District","2014comp/Events/RISMI/"],
-	["Southington District","2014comp/Events/CTSOU/"],
-	["Northeastern University District","2014comp/Events/MABOS/"],
-	["Hartford District","2014comp/Events/CTHAR/"],
-	["Pine Tree District","2014comp/Events/MELEW/"],
+	["Mid-Atlantic Region Championship","2014comp/Events/MRCMP/"],
+	["New England Region Championship","2014comp/Events/NECMP/"],
 	["PNW Auburn Mountainview District","2014comp/Events/WAAMV/"],
 	["PNW Oregon City District","2014comp/Events/ORORE/"],
 	["PNW Glacier Peak District","2014comp/Events/WASNO/"],
@@ -119,7 +100,26 @@ var competitionList = [
 	["PNW Shorewood District","2014comp/Events/WASHOU/"],
 	["PNW Auburn District","2014comp/Events/WAAHS/"],
 	["PNW Central Washington University District","2014comp/Events/WAELL/"],
-	["PNW Oregon State University District","2014comp/Events/OROSU/"]
+	["PNW Oregon State University District","2014comp/Events/OROSU/"],
+	["Autodesk PNW Championship","2014comp/Events/PNCMP/"],
+	["Center Line District","2014comp/Events/MICEN/"],
+	["Southfield District","2014comp/Events/MISOU/"],
+	["Kettering University District","2014comp/Events/MIKET/"],
+	["Gull Lake District","2014comp/Events/MIGUL/"],
+	["Escanaba District","2014comp/Events/MIESC/"],
+	["Granite State District","2014comp/Events/NHNAS/"],
+	["UNH District","2014comp/Events/NHDUR/"],
+	["Groton District","2014comp/Events/CTGRO/"],
+	["WPI District","2014comp/Events/MAWOR/"],
+	["Rhode Island District","2014comp/Events/RISMI/"],
+	["Southington District","2014comp/Events/CTSOU/"],
+	["Northeastern University District","2014comp/Events/MABOS/"],
+	["Hartford District","2014comp/Events/CTHAR/"],
+	["Pine Tree District","2014comp/Events/MELEW/"],
+	["FIRST Championship Archimedes","2014comp/Events/Archimedes"],
+	["FIRST Championship Curie","2014comp/Events/Curie"],
+	["FIRST Championship Galileo","2014comp/Events/Galileo"],
+	["FIRST Championship Newton","2014comp/Events/Newton"]
 ];
 
 
@@ -129,7 +129,8 @@ var goToComp = document.getElementById("goToComp");
 var s = "";
 
 for (var i = 0; i < competitionList.length; i++) {
-	s += "<option id='event" + competitionList[i][0].split(" ").join("").split("-").join("") +"'>" + competitionList[i][0] + "</option>";
+	var cmp = competitionList[i][0];
+	s += "<option id='event" + cmp.split(" ").join("").split("-").join("") +"'>" + cmp + "</option>";
 }
 
 compselector.innerHTML = s;

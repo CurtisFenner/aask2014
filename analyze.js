@@ -5,10 +5,13 @@ function Analyze(event) {
 	var ranks = event.getRanks();
 	var teams = [];
 	var winMargin = [];
+	var QS = [];
 	for (var i = 0; i < ranks.length; i++) {
 		teams.push(ranks[i].get("team"));
 		winMargin.push(0);
+		QS.push(ranks[i].get("QS"));
 	}
+	this.QS = QS;
 	var mpf = zeros(ranks.length,ranks.length);
 
 	//createMPF()
@@ -96,4 +99,31 @@ function Analyze(event) {
 	this.expected = expected;
 
 	this.ccwm = MatrixSolveLUPrefactorized(L,U,arrayToColumnVector(winMargin));
+
+	this.getCCWM = function(t) {
+		var u = teams.indexOf(t);
+		if (u >= 0) {
+			return ccwm[u];
+		} else {
+			return 0;
+		}
+	}
+	this.getTotal = function(t) {
+		var u = teams.indexOf(t);
+		if (u >= 0) {
+			return expected[expected.length-1][u];
+		} else {
+			return 0;
+		}
+	}
+
+	for (var i = 0; i < matches.length; i++) {
+		var match = matches[i];
+		if (isFinite(match.redScore) && isFinite(match.blueScore)) {
+
+		} else {
+			//An unplayed matched.
+			var rede = predictAllianceValue(match.red[0],match.red[1],match.red[2], P_OPR, this);
+		}
+	}
 }
