@@ -166,43 +166,8 @@ if (isset($_REQUEST["grab"])) {
 		
 		<br/>
 		
-		<div style="width:819px; margin:0px; padding:0px;position:relative;overflow:hidden;">
-			<table class="shinytable" id="bigtable" data-sorting="iidddddd" style="width:819px;">
-				<thead>
-					<tr>
-						<td colspan="9">
-						<script>document.write(eventName + " (Analysis)");</script>
-						</td>
-					</tr>
-					<tr>
-						<td colspan="2">FIRST Data*</td>
-						<td colspan="5">Direct Calculations<sup>&dagger;</sup></td>
-						<td colspan="2">Subjective Calculations<sup>&Dagger;</sup></td>
-					</tr>
-					<tr>
-						<td>Team</td>
-						<td>Rank</td>
-						<td>Auton</td>
-						<td>Assist</td>
-						<td>Trust/Catch</td>
-						<td>Teleop</td>
-						<td>OPR</td>
-						<td>CCWM</td>
-						<td>Seed<sup>&#167;</sup></td>
-					</tr>
-				</thead>
-				<tbody id="bigdata">
-					<tr><td colspan="9"><em>Waiting for script to load...</em></td></tr>
-				</tbody>
-				<tfoot>
-					<tr><td colspan="9">
-						* Tabulated directly from <a href="http://www.usfirst.org">www.US<em>FIRST.org</em></a><br/>
-						&dagger; Calculated using match and ranking data directly to solve a system of linear equations.  These numbers are reliable <em>estimates</em> of team utility.<br/>
-						&Dagger; Calculated from raw data and previous calculations manipulated in a way deemed meaningful by the creators of AASK.<br/>
-						&#167; Projected Seed, from match results predicted with OPR.
-					</td></tr>
-				</tfoot>
-			</table>
+		<div id="bigtableplace" style="width:819px; margin:0px; padding:0px;position:relative;overflow:hidden;">
+			<em>Loading and Processing Data</em>
 		</div>
 		
 		<!-- End of Big Table -->
