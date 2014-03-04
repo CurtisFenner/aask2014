@@ -1,6 +1,5 @@
-"use strict";
 /*
-This file is part of the Adambots Automated Scouting Kit (AASK).
+This file is part of the AdamBots Automated Scouting Kit (AASK).
 
 AASK is free software: you can redistribute it and/or modify it under the terms
 of the GNU General Public License as published by the Free Software Foundation,
@@ -15,7 +14,11 @@ AASK.  If not, see <http://www.gnu.org/licenses/>.
 
 AASK was started during the 2013 FIRST season by Ben Bray and Curtis Fenner of
 Team 245, the Adambots, for use by other FRC teams.
+
+For the 2014 FIRST season, 
 */
+
+"use strict";
 
 var competitionList = [
 	["Central Illinois Regional","2014comp/Events/ILIL/"],

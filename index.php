@@ -1,6 +1,6 @@
 <?php
 /*
-This file is part of the Adambots Automated Scouting Kit (AASK).
+This file is part of the AdamBots Automated Scouting Kit (AASK).
 
 AASK is free software: you can redistribute it and/or modify it under the terms
 of the GNU General Public License as published by the Free Software Foundation,
@@ -14,7 +14,7 @@ You should have received a copy of the GNU General Public License along with
 AASK.  If not, see <http://www.gnu.org/licenses/>.
 
 AASK was started during the 2013 FIRST season by Ben Bray and Curtis Fenner of
-Team 245, the Adambots, for use by other FRC teams.
+Team 245, the AdamBots, for use by other FRC teams.
 */
 
 
@@ -130,7 +130,7 @@ if (isset($_REQUEST["grab"])) {
 <html> 
 	<head>
 		<meta charset="UTF-8">
-		<title>Adambots Automated Scouting Kit</title>
+		<title>AdamBots Automated Scouting Kit</title>
 		<script type="text/javascript" src="<?php directory();//This simplifies moving between servers which put resource files in different places.?>prediction.js"></script>
 		<script type="text/javascript" src="<?php directory();?>output.js"></script>
 		<script type="text/javascript" src="<?php directory();?>statistics.js"></script>
@@ -143,10 +143,10 @@ if (isset($_REQUEST["grab"])) {
 		<link href="<?php directory();?>scouting.css" rel="stylesheet" type="text/css">
 	</head>
 	<body style="width:820px; padding-left:50px; padding-right:50px; margin-left:auto; margin-right:auto;">
-		<h1>Adambots Automated Scouting Kit</h1>
-		<p>The Adambots Automated Scouting Kit (AASK) automatically generates estimations of the ability of robots at competition. 
+		<h1>AdamBots Automated Scouting Kit</h1>
+		<p>The AdamBots Automated Scouting Kit (AASK) automatically generates estimations of the ability of robots at competition. 
 		It utilizes the estimation of solutions to linear equations to predict expected contributions.
-		<p>This tool was produced using Javascript, PHP, HTML, and CSS by Adambots team members for any <em>FIRST</em> robotics teams to use! 
+		<p>This tool was produced using Javascript, PHP, HTML, and CSS by AdamBots team members for any <em>FIRST</em> robotics teams to use! 
 		Click the table headings to sort the table.  See <a href="#about">About This Tool&#x25BE;</a> below for information about this tool and instructions for use.<br/>
 		<br/><b>Important note:</b> this tool will only produce constructive and accurate results when enough matches have been played; each team should have played at least several matches before any of these calculations are taken seriously.<br/>
 		
@@ -362,7 +362,7 @@ if (isset($_REQUEST["grab"])) {
 			<br/><br/>
 			
 			<div class="license">
-				<code>The <em>Adambots Automated Scouting Kit (AASK)</em> is free software: you can 
+				<code>The <em>AdamBots Automated Scouting Kit (AASK)</em> is free software: you can 
 				redistribute it and/or modify it under the terms of the GNU General Public License
 				as published by the Free Software Foundation, either version 3 of the License, 
 				or (at your option) any later version.
@@ -375,7 +375,7 @@ if (isset($_REQUEST["grab"])) {
 				AASK.  If not, see <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>.
 				<br/><br/>
 				AASK was started during the 2013 FIRST season by Ben Bray and Curtis Fenner of
-				Team 245, the Adambots, for use by other FRC teams.</code>
+				Team 245, the AdamBots, for use by other FRC teams.</code>
 				<br/>
 			</div>
 		</div>
