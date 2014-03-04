@@ -38,3 +38,11 @@ function Main() {
 		tab.addSelf(document.getElementById("bigtableplace"));
 	});
 }
+
+function goToRankings(){
+	window.open("http://www2.usfirst.org/" + eventURL + "rankings.html", "_self");
+}
+
+function goToSchedule(){
+	window.open("http://www2.usfirst.org/" + eventURL + "matchresults.html", "_self");
+}

@@ -173,6 +173,9 @@ function FRCEvent(baseurl,eventName,callback) {
 				break;
 			}
 			var row = results[i].split(";");
+			if (row.length < 5) {
+				continue;
+			}
 			var m = {};
 			m.time = row[0];
 			m.name = row[1].replace("Qtr","QF").replace("Semi","SF").replace("Final","F");
