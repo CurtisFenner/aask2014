@@ -191,7 +191,6 @@ if (isset($_REQUEST["grab"])) {
 						<td>Trust/Catch</td>
 						<td>Teleop</td>
 						<td>OPR</td>
-						<td>DPR</td>
 						<td>CCWM</td>
 						<td>Seed<sup>&#167;</sup></td>
 					</tr>
@@ -237,7 +236,6 @@ if (isset($_REQUEST["grab"])) {
 							<td>Climb</td>
 							<td>Teleop</td>
 							<td>OPR</td>
-							<td>DPR</td>
 							<td>CCWM</td>
 							<td>Seed*</td>
 						</tr>
@@ -340,7 +338,6 @@ if (isset($_REQUEST["grab"])) {
 						<tr>
 							<td colspan="2">
 								<label><input name="m1atchpredictionmode" type="radio" checked="checked" id="m1atchpredictionmode0" />Estimate Scores using OPR</label><br/>
-								<label><input name="m1atchpredictionmode" type="radio" id="m1atchpredictionmode1" />Estimate Scores using OPR+DPR</label><br/>
 								<label><input name="m1atchpredictionmode" type="radio" id="m1atchpredictionmode2" />Estimate Winning Margin using CCWM</label><br/>
 							</td>
 						</tr>
@@ -363,7 +360,6 @@ if (isset($_REQUEST["grab"])) {
 					<tr>
 						<td colspan="5">
 							<label><input name="m2atchpredictionmode" type="radio" checked="checked" id="m2atchpredictionmode0" />Estimate Scores using only OPR (<span id="m2ode0acc"><em>loading...</em></span>)</label><br/>
-							<label><input name="m2atchpredictionmode" type="radio" id="m2atchpredictionmode1" />Estimate Scores using OPR+DPR (<span id="m2ode1acc"><em>loading...</em></span>)</label><br/>
 							<label><input name="m2atchpredictionmode" type="radio" id="m2atchpredictionmode2" />Estimate Winning Margin using CCWM (<span id="m2ode2acc"><em>loading...</em></span>)</label><br/>
 						</td>
 					</tR>
@@ -424,9 +420,9 @@ if (isset($_REQUEST["grab"])) {
 				<li>We solve for the vector <code>x</code>, which contains the average contribution of each team.</li>
 			</ul>
 		
-			<p>Because of the special properties of our matrix, we can easily find an exact solution when the matrix is nonsingular using <a href="http://en.wikipedia.org/wiki/LU_decomposition">LU Factorization</a> (without pivoting!) followed by forward- and back-substitution.  When the matrix is singular, we approximate the solution iteratively with the <a href="http://en.wikipedia.org/wiki/Gauss-Seidel">Gauss-Seidel method</a> and display a warning to the user.
+			<p>Because of the special properties of our matrix, we can easily find an exact solution when the matrix is nonsingular using <a href="http://en.wikipedia.org/wiki/LU_decomposition">LU Factorization</a> (without pivoting!) followed by forward- and back-substitution.  When the matrix is singular, while the <a href="http://en.wikipedia.org/wiki/Gauss-Seidel">Gauss-Seidel method</a> may give an answer, in practice it is not trustworthy and so is not displayed.
 		
-			<p>The <b>Defensive Power Rating (DPR)</b> for a team is calculated by iterating through the list of completed matches and using the calculated OPR values to predict the outcome of each match.  For each match, for both alliances, the difference between this expected outcome and the true outcome of the match is credited to the defensive utility of the opposing alliance.  For each team, we sum up these differences and solve a linear system similar to the one above using this new tabulated data.
+			<!-- <p>The <b>Defensive Power Rating (DPR)</b> for a team is calculated by iterating through the list of completed matches and using the calculated OPR values to predict the outcome of each match.  For each match, for both alliances, the difference between this expected outcome and the true outcome of the match is credited to the defensive utility of the opposing alliance.  For each team, we sum up these differences and solve a linear system similar to the one above using this new tabulated data. -->
 			
 			<p>The <b>Calculated Contribution to the Winning Margin (CCWM)</b> for each team is calculated by summing up the alliance score difference for each team for each match and solving our favorite system of linear equations for the <code>x</code> vector with these margins in our <code>b</code> vector.
 			

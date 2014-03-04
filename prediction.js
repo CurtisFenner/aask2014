@@ -39,9 +39,6 @@ function predictTeamValue(team,mode,even) {
 	if (mode == 2) {
 		return even.getCCWM(team);
 	}
-	if (mode == 1) {
-		return even.getTotalEC(team) + Math.max(0,even.getDPR(team));
-	}
 	if (mode == 0) {
 		return even.getTotalEC(team);
 	}
@@ -54,8 +51,7 @@ function predictAllianceValue(t1,t2,t3,m,e) {
 
 function setupMatchPredictor() {
 	predictionred1.onchange = predictionred2.onchange = predictionred3.onchange = predictionblue1.onchange = predictionblue2.onchange = predictionblue3.onchange = 
-	predictionred1.onkeyup = predictionred2.onkeyup = predictionred3.onkeyup = predictionblue1.onkeyup = predictionblue2.onkeyup = predictionblue3.onkeyup =
-	m1atchpredictionmode1.onchange = m1atchpredictionmode0.onchange = m1atchpredictionmode2.onchange = function() {
+	predictionred1.onkeyup = predictionred2.onkeyup = predictionred3.onkeyup = predictionblue1.onkeyup = predictionblue2.onkeyup = predictionblue3.onkeyup = m1atchpredictionmode0.onchange = m1atchpredictionmode2.onchange = function() {
 
 		if (!frcEvent.ready) {
 			return;
@@ -65,7 +61,7 @@ function setupMatchPredictor() {
 
 			var k = obj.value.trim();
 			k = parseInt(k);
-			if (frcEvent.teamHash.get(k)) {
+			if (frcEvent.teams.indexOf(k) >= 0) {
 				obj.style.fontWeight = "bold";
 			} else {
 				obj.style.fontWeight = "normal";
@@ -79,9 +75,6 @@ function setupMatchPredictor() {
 		style(predictionblue3);
 
 		var mode = 0;
-		if (m1atchpredictionmode1.checked) {
-			mode = 1;
-		}
 		if (m1atchpredictionmode2.checked) {
 			mode = 2;
 		}
@@ -116,9 +109,6 @@ function setupMatchPredictor() {
 
 function predictUnplayed() {
 	var mode = 0;
-	if (m2atchpredictionmode1.checked) {
-		mode = 1;
-	}
 	if (m2atchpredictionmode2.checked) {
 		mode = 2;
 	}
