@@ -1,24 +1,25 @@
 "use strict";
 
-var analyze;
 
 function Main() {
 	var event = new FRCEvent(eventURL,"TEST",
 		function(event) {
-		var an = new Analyze(event);
-		analyze = an;
+		var analyze = new Analyze(event);
 
-		console.log(an);
+		if (analyze.message) {
+			bigtableplace.innerHTML = "<strong style=color:red>" + analyze.message + "</strong>";
+			return;
+		}
 
 		var data = []; //list of rows.
 		//Team	Rank	Auton	Truss	Assist	Teleop	OPR	CCWM	DPR	Seed
-		for (var i = 0; i < an.teams.length; i++) {
-			var u = [an.teams[i], i+1];
-			for (var j = 0; j < an.expected.length; j++) {
-				u.push(parseFloat(an.expected[j].get(i,0).toFixed(1)));
+		for (var i = 0; i < analyze.teams.length; i++) {
+			var u = [analyze.teams[i], i+1];
+			for (var j = 0; j < analyze.expected.length; j++) {
+				u.push(parseFloat(analyze.expected[j].get(i,0).toFixed(1)));
 			}
-			u.push(an.ccwm.get(i,0).toFixed(1));
-			u.push(an.QS[i]);
+			u.push(analyze.ccwm.get(i,0).toFixed(1));
+			u.push(analyze.QS[i]);
 			data.push(u);
 		}
 

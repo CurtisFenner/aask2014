@@ -13,10 +13,13 @@ function Analyze(event) {
 	}
 	var mpf = zeros(ranks.length,ranks.length);
 
+	var playedMatches = 0;
+
 	for (var i = 0; i < matches.length; i++) {
 		var match = matches[i];
 		if (isFinite(match.redScore) && isFinite(match.blueScore)) {
 			//A played matched.
+			playedMatches++;
 			for (var u = 0; u < 3; u++) {
 				for (var v = u+1; v < 3; v++) {
 					//Pair each team on each alliance and note that they've
@@ -43,6 +46,13 @@ function Analyze(event) {
 			}
 		}
 	}
+
+	if (playedMatches < 5) {
+		//NOT ENOUGH MATCHES HAVE BEEN PLAYED
+		this.message = "Not enough matches have been played.";
+		return true;
+	}
+
 	for (var i = 0; i < ranks.length; i++) {
 		var sum = 0;
 		for (var j = 0; j < ranks.length; j++) {
