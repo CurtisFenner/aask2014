@@ -36,10 +36,10 @@ Array.prototype.remove = function(from, to) {
 //This is for convenience. It loads from the FRCEvent `even` the data.
 function predictTeamValue(team,mode,even) {
 	team = parseInt("" + team);
-	if (mode == P_CCWM) {
+	if (mode === P_CCWM) {
 		return even.getCCWM(team);
 	}
-	if (mode == P_OPR) {
+	if (mode === P_OPR) {
 		return even.getExpected(team);
 	}
 }
@@ -49,19 +49,15 @@ function predictAllianceValue(t1,t2,t3,m,e) {
 	return predictTeamValue(t1,m,e) + predictTeamValue(t2,m,e) + predictTeamValue(t3,m,e);
 }
 
-function setupMatchPredictor() {
+function setupMatchPredictor(an) {
 	predictionred1.onchange = predictionred2.onchange = predictionred3.onchange = predictionblue1.onchange = predictionblue2.onchange = predictionblue3.onchange = 
 	predictionred1.onkeyup = predictionred2.onkeyup = predictionred3.onkeyup = predictionblue1.onkeyup = predictionblue2.onkeyup = predictionblue3.onkeyup = m1atchpredictionmode0.onchange = m1atchpredictionmode2.onchange = function() {
 
-		if (!frcEvent.ready) {
-			return;
-		}
 
 		style = function(obj) {
-
 			var k = obj.value.trim();
 			k = parseInt(k);
-			if (frcEvent.teams.indexOf(k) >= 0) {
+			if (an.teams.indexOf(k) >= 0) {
 				obj.style.fontWeight = "bold";
 			} else {
 				obj.style.fontWeight = "normal";
@@ -79,14 +75,14 @@ function setupMatchPredictor() {
 			mode = 2;
 		}
 
-		var red = predictAllianceValue(predictionred1.value,predictionred2.value,predictionred3.value,mode,frcEvent);
+		var red = predictAllianceValue(predictionred1.value,predictionred2.value,predictionred3.value,mode,an);
 
 		redallianceprediction.value = red.toFixed(2);
 		if (red == 0) {
 			redallianceprediction.value = "";
 		}
 
-		var blue = predictAllianceValue(predictionblue1.value,predictionblue2.value,predictionblue3.value,mode,frcEvent);
+		var blue = predictAllianceValue(predictionblue1.value,predictionblue2.value,predictionblue3.value,mode,an);
 
 
 		blueallianceprediction.value = blue.toFixed(2);

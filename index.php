@@ -181,7 +181,7 @@ if (isset($_REQUEST["grab"])) {
 		
 			<!-- Column 1 -->
 			
-			<div style="width:400px; margin:0px; padding:0px; float:left;">
+			<div style="width:400px; margin:0px; padding:0px; float:left;display:none;">
 
 				<!-- Score Distribution Graph -->
 				<table class="shinytable">
@@ -297,7 +297,7 @@ if (isset($_REQUEST["grab"])) {
 			<div class="hr"></div>
 			<br/>
 
-			<table class="shinytable" id="matchresults">
+			<table class="shinytable" id="matchresults" style="display:none;">
 				<thead>
 					<tr><td colspan="7">Results and Current Model's Predictions for Played Matches</td></tr>
 					<tr><td style="width:20px;">Match</td><td>Red Alliance</td><td>Blue Alliance</td><td>Red Score</td><td>Blue Score</td><td>Red Pred.</td><td>Blue Pred.</td></tr>

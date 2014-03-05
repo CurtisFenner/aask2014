@@ -110,7 +110,7 @@ function Analyze(event) {
 	this.getCCWM = function(t) {
 		var u = teams.indexOf(t);
 		if (u >= 0) {
-			return ccwm[u];
+			return this.ccwm.get(u,0);
 		} else {
 			return 0;
 		}
@@ -118,7 +118,7 @@ function Analyze(event) {
 	this.getExpected = function(t) {
 		var u = teams.indexOf(t);
 		if (u >= 0) {
-			return expected[expected.length-1][u];
+			return expected[expected.length-1].get(u,0);
 		} else {
 			return 0;
 		}

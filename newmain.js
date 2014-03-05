@@ -1,10 +1,12 @@
 "use strict";
 
+var manal;
 
 function Main() {
 	var event = new FRCEvent(eventURL,"TEST",
 		function(event) {
 		var analyze = new Analyze(event);
+		manal = analyze;
 
 		if (analyze.message) {
 			bigtableplace.innerHTML = "<strong style=color:red>" + analyze.message + "</strong>";
@@ -38,6 +40,7 @@ function Main() {
 		tab.addSelf(document.getElementById("bigtableplace"));
 
 		createDistributionGraph(analyze);
+		setupMatchPredictor(analyze);
 	});
 }
 
