@@ -36,6 +36,8 @@ function Main() {
 		);
 		bigtableplace.innerHTML = "";
 		tab.addSelf(document.getElementById("bigtableplace"));
+
+		createDistributionGraph(analyze);
 	});
 }
 
@@ -51,8 +53,8 @@ function goToSchedule(){
 function createDistributionGraph(an) {
 	var oprs = an.expected[an.expected.length-1];
 	var ccwms = an.ccwm.toSingleArray();
-	var min = an.getTotal(0);
-	var max = an.getTotal(0);
+	var min = oprs[0];
+	var max = oprs[0];
 	for (var i = 0; i < an.teams.length; i++) {
 		var exp = oprs[i];
 		var ccw = ccwms[i];
@@ -61,5 +63,37 @@ function createDistributionGraph(an) {
 		min = Math.min(ccw,min);
 		max = Math.max(ccw,max);
 	}
-	var oprs = an.expected[an.expected.length-1];
+
+	max = Math.floor(max*0.11)*10;//roundPretty(winMax);
+	min = Math.floor((min-Math.abs(min)*0.1)/10)*10;//roundPretty(winMin);
+
+
+	var maxRange = 0;
+
+	var oprmean = mean(oprs);
+	var oprstd = std(oprs);
+	var oprLine = normPDFRange(-100,200,oprmean,oprstd);
+
+	for (var i = 0; i < oprLine.length; i++) {
+		maxRange = Math.max(maxRange,oprLine[i][1]);
+	}
+
+	var ccwmmean = mean(ccwms);
+	var ccwmstd = std(ccwms);
+	var ccwmLine = normPDFRange(-100,200,ccwmmean,ccwmstd);
+	for (var i = 0; i < oprLine.length; i++) {
+		maxRange = Math.max(maxRange,ccwmLine[i][1]);
+	}
+
+	var graphDistro = document.getElementById("graphDistro").getContext("2d");
+
+	plotAxis(graphDistro, min, max, 0, maxRange * 1.1, "", "","",true,true,true); //empty titles and no ticks so we don't double up text.
+	graphDistro.lines = 0.5;
+	plotCurve(graphDistro, oprLine , "#EE9999" , true);
+
+	graphDistro.lines = 0.5;
+	plotCurve(graphDistro, ccwmLine , "#9999EE" , true);
+
+	plotAxis(graphDistro, min, max, 0, maxRange * 1.1, "", "","",true,true,true); //empty titles and no ticks so we don't double up text.
+
 }
