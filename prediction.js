@@ -53,7 +53,6 @@ function setupMatchPredictor(an) {
 	predictionred1.onchange = predictionred2.onchange = predictionred3.onchange = predictionblue1.onchange = predictionblue2.onchange = predictionblue3.onchange = 
 	predictionred1.onkeyup = predictionred2.onkeyup = predictionred3.onkeyup = predictionblue1.onkeyup = predictionblue2.onkeyup = predictionblue3.onkeyup = m1atchpredictionmode0.onchange = m1atchpredictionmode2.onchange = function() {
 
-
 		style = function(obj) {
 			var k = obj.value.trim();
 			k = parseInt(k);
@@ -103,29 +102,16 @@ function setupMatchPredictor(an) {
 	}
 }
 
-function predictUnplayed() {
-	var mode = 0;
+function predictUnplayed(an) {
+	var mode = P_OPR;
 	if (m2atchpredictionmode2.checked) {
-		mode = 2;
+		mode = P_CCWM;
 	}
 	//Rebuild the datatata.
 	//console.log(frcEvent.qualTable.data);
 	var correct = [0,0,0];
 	var counted = 0;
-	var qu = frcEvent.qualTable.data;
-	var qu2 = []; // Generate total match list, of both qualification and elimination matches
-	for (var i = 0; i < frcEvent.qualTable.data.length; i++) {
-		var u = frcEvent.qualTable.data[i].slice(0);
-		u.name = "<b>Q" + u[1] + "</b>";
-		qu2.push(u);
-	}
-	for (var i = 0; i < frcEvent.elimTable.data.length; i++) {
-		var u = frcEvent.elimTable.data[i].slice(0);
-		u.name = "<b>" + frcEvent.elimTable.raw[i][1].replace(" ","<br/>") + "</b>";
-		u.remove(1);
-		qu2.push(u);
-	}
-	qu = qu2;
+	var matches = an.getMatches().concat(an.getEliminations() || []);
 
 	var colmatch = [];
 	var finmatch = [];
@@ -135,19 +121,17 @@ function predictUnplayed() {
 	var finscores = [[],[]];
 	var finscoresreal = [[],[]];
 
-	for (var m = 0; m < qu.length; m++) {
+	for (var m = 0; m < matches.length; m++) {
 		// Get Match (Row)
-		var match = qu[m];
-		
+		var match = matches[m];
 		// Tabulate
-		if (isNaN(match[8])) {
-			//Match has not been played.
-			//colmatch.push("Q" + match[1]);	
-			colmatch.push(qu[m].name);
-			var redalli = match[2] + "&nbsp;&nbsp;" + match[3] + "&nbsp;&nbsp;" + match[4];
-			var bluealli = match[5] + "&nbsp;&nbsp;" + match[6] + "&nbsp;&nbsp;" + match[7];
-			var red = predictAllianceValue(match[2],match[3],match[4] , mode , frcEvent);
-			var blue = predictAllianceValue(match[5],match[6],match[7] , mode , frcEvent);
+		if (isNaN(match.redScore)) {
+			//{Match has NOT been played}
+			colmatch.push(matches[m].name);
+			var redalli = match.red[0] + "&nbsp;&nbsp;" + match.red[1] + "&nbsp;&nbsp;" + match.red[2];
+			var bluealli = match.blue[0] + "&nbsp;&nbsp;" + match.blue[1] + "&nbsp;&nbsp;" + match.blue[2];
+			var red = predictAllianceValue(match.red[0],match.red[1],match.red[2] , mode , an);
+			var blue = predictAllianceValue(match.blue[0],match.blue[1],match.blue[2] , mode , an);
 			
 			if (red > blue ) {
 				// Prediction Table
@@ -163,17 +147,18 @@ function predictUnplayed() {
 			colteams[0].push(redalli);
 			colteams[1].push(bluealli);
 		} else {
-			//Match has been played.
-			//finmatch.push("Q" + match[1]);	//<derivative from above>
-			finmatch.push(qu[m].name);
-			var redalli = match[2] + "&nbsp;&nbsp;" + match[3] + "&nbsp;&nbsp;" + match[4];
-			var bluealli = match[5] + "&nbsp;&nbsp;" + match[6] + "&nbsp;&nbsp;" + match[7];
-			var red = predictAllianceValue(match[2],match[3],match[4] , mode , frcEvent);
-			var blue = predictAllianceValue(match[5],match[6],match[7] , mode , frcEvent);
+			//{Match HAS been played}
+			finmatch.push(matches[m].name);
+			var redA = match.red; //red alliance
+			var blueA = match.blue;//blue alliance
+			var redalli = redA[0] + "&nbsp;&nbsp;" + redA[1] + "&nbsp;&nbsp;" + redA[2];
+			var bluealli = blueA[0] + "&nbsp;&nbsp;" + blueA[1] + "&nbsp;&nbsp;" + blueA[2];
+			var red = predictAllianceValue(redA[0],redA[1],redA[2] , mode , an);
+			var blue = predictAllianceValue(blueA[0],blueA[1],blueA[2] , mode , an);
 			
 			var op = "";
 			var cp = "";
-			if (red >= blue != parseInt(match[8]) >= parseInt(match[9])) {
+			if (red >= blue !== parseInt(match.redScore) >= parseInt(match.blueScore)) {
 				op = "<del>";
 				cp = "</del>";
 			}
@@ -187,25 +172,25 @@ function predictUnplayed() {
 				finscores[0].push( op + red.toFixed(1) + cp );
 				finscores[1].push( op + "" + blue.toFixed(1) + "" + cp );
 			}
-			if (match[8] >= match[9]) {
-				finscoresreal[0].push("<b>" + match[8] + "</b>");
+			if (match.redScore >= match.blueScore) {
+				finscoresreal[0].push("<b>" + match.redScore + "</b>");
 				redalli = "<b>" + redalli + "</b>";
 			} else {
-				finscoresreal[0].push(match[8]);
+				finscoresreal[0].push(match.redScore);
 			}
-			if (match[9] >= match[8]) {
-				finscoresreal[1].push("<b>" + match[9] + "</b>");
+			if (match.blueScore >= match.redScore) {
+				finscoresreal[1].push("<b>" + match.blueScore + "</b>");
 				bluealli = "<b>" + bluealli + "</b>";
 			} else {
-				finscoresreal[1].push(match[9]);
+				finscoresreal[1].push(match.blueScore);
 			}
 			finteams[0].push(redalli);
 			finteams[1].push(bluealli); //</derivative from above>
 			for (var z = 0; z < 3; z++) {
-				var red = predictAllianceValue(match[2],match[3],match[4] , z , frcEvent ); //The scores predicted by the current game model.
-				var blue = predictAllianceValue(match[5],match[6],match[7] , z , frcEvent );
-				var realRed = parseInt(match[8]); //The actual scores for this match reported by FIRST
-				var realBlue = parseInt(match[9]);
+				var red = predictAllianceValue(match.red[0],match.red[1],match.red[2], z , an ); //The scores predicted by the current game model.
+				var blue = predictAllianceValue(match.blue[0],match.blue[1],match.blue[2] , z , an );
+				var realRed = parseInt(match.redScore); //The actual scores for this match reported by FIRST
+				var realBlue = parseInt(match.blueScore);
 				
 				// Count Correct
 				if ((red >= blue) == (realRed >= realBlue) ) {
@@ -218,7 +203,7 @@ function predictUnplayed() {
 
 
 	m2ode0acc.innerHTML = Math.floor(100 * correct[0]/counted) + "% accuracy";
-	m2ode1acc.innerHTML = Math.floor(100 * correct[1]/counted) + "% accuracy";
+	//m2ode1acc.innerHTML = Math.floor(100 * correct[1]/counted) + "% accuracy";
 	m2ode2acc.innerHTML = Math.floor(100 * correct[2]/counted) + "% accuracy";
 
 	if(colmatch.length > 0){

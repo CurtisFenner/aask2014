@@ -41,6 +41,7 @@ function Main() {
 
 		createDistributionGraph(analyze);
 		setupMatchPredictor(analyze);
+		predictUnplayed(analyze);
 	});
 }
 

@@ -1,6 +1,9 @@
 "use strict";
 
 function Analyze(event) {
+	this.getMatches = event.getMatches;
+	this.getRanks = event.getRanks;
+	this.getEliminations = event.getEliminations;
 	var matches = event.getMatches();
 	var ranks = event.getRanks();
 	var teams = [];

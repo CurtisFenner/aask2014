@@ -297,7 +297,7 @@ if (isset($_REQUEST["grab"])) {
 			<div class="hr"></div>
 			<br/>
 
-			<table class="shinytable" id="matchresults" style="display:none;">
+			<table class="shinytable" id="matchresults">
 				<thead>
 					<tr><td colspan="7">Results and Current Model's Predictions for Played Matches</td></tr>
 					<tr><td style="width:20px;">Match</td><td>Red Alliance</td><td>Blue Alliance</td><td>Red Score</td><td>Blue Score</td><td>Red Pred.</td><td>Blue Pred.</td></tr>
