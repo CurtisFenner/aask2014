@@ -358,7 +358,7 @@ if (isset($_REQUEST["grab"])) {
 			<p>AASK is dependent on the match schedule and rankings reported by <a href="http://www.usfirst.org">www.US<em>FIRST.org</em></a>.  Occasionally, the <em>FIRST</em> website will experience an outage, rendering our tool temporarily incapacitated.  We have implemented a simple caching system, designed to reduce the frequency of such failures, but ultimately the status of the <em>FIRST</em> website controls the functionality of this tool.<br/>
 
 			<h3>Want Source Code?</h3>
-			This project is available on <a href="https://github.com/benrbray/adambots-automated-scouting-kit/">GitHub</a> under the <a href="http://www.gnu.org/licenses/gpl.html">GPU General Public License</a>:
+			This project is available on <a href="https://github.com/CurtisFenner/aask2014/">GitHub</a> under the <a href="http://www.gnu.org/licenses/gpl.html">GPU General Public License</a>:
 			<br/><br/>
 			
 			<div class="license">
@@ -378,7 +378,7 @@ if (isset($_REQUEST["grab"])) {
 				Team 245, the AdamBots, for use by other FRC teams.
 				<br><br>
 				For the 2014 FIRST season, Curtis Fenner and Nathan Fenner of Team 245, the AdamBots
-				updated and improved it.</code>
+				updated and improved the API.</code>
 				<br/>
 			</div>
 		</div>
