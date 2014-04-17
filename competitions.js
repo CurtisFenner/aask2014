@@ -120,10 +120,10 @@ var competitionList = [
 	["Northeastern University District","2014comp/Events/MABOS/"],
 	["Hartford District","2014comp/Events/CTHAR/"],
 	["Pine Tree District","2014comp/Events/MELEW/"],
-	["FIRST Championship Archimedes","2014comp/Events/Archimedes"],
-	["FIRST Championship Curie","2014comp/Events/Curie"],
-	["FIRST Championship Galileo","2014comp/Events/Galileo"],
-	["FIRST Championship Newton","2014comp/Events/Newton"]
+	["FIRST Championship Archimedes","2014comp/Events/Archimedes/"],
+	["FIRST Championship Curie","2014comp/Events/Curie/"],
+	["FIRST Championship Galileo","2014comp/Events/Galileo/"],
+	["FIRST Championship Newton","2014comp/Events/Newton/"]
 ];
 
 
